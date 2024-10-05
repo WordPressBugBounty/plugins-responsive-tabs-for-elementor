@@ -1,0 +1,1 @@
+# plugins-responsive-tabs-for-elementor
