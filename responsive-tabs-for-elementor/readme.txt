@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: tabs, tabs for elementor, tab plugin, elementor addons, tab
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.6
-Stable tag: 9.3.0
+Tested up to: 6.5.4
+Stable tag: 9.3.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -12,8 +12,10 @@ Responsive Tab Plugin for Elementor allows you to show multiple levels of tabs i
 
 == Description ==
 
+[Live Demo](https://prokitelementor.com/live-demo) | [Upgrade to Pro!](https://prokitelementor.com/#pricing)
+
 The compact Responsive Tabs For Elementor lets you show information in several levels of tabs. Now you can easily show text using several types of tabs at the same time for better categorizing your information. But without overloading the site with long texts.
-The plugin has many features and settings to customize the reviews to suit your needs.
+The plugin has many features and settings to customize the reviews to suit your needs. Upgrade to PRO and unlock new possibilities with [Pro Kit for Elementor!](https://prokitelementor.com)
 
 ### FEATURES
 
@@ -61,6 +63,9 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 14. Responsive view for elementor settings of Tabs Plugin
 
 == Changelog ==
+
+= 9.3.1 - 2025-02-26 =
+- Modified: Changed plugin description
 
 = 9.3.0 - 2024-06-11 =
 - New: Added Right-To-Left logic for widgets.

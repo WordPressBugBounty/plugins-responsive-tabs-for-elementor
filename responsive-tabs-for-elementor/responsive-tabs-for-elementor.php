@@ -7,7 +7,7 @@
  * Plugin Name: Responsive Tabs For Elementor
  * Description: Responsive Tab Plugin for Elementor allows you to show multiple levels of tabs in accordion with text, images, ets.
  * Plugin URI:
- * Version:     9.3.0
+ * Version:     9.3.1
  * Author:      UAPP GROUP
  * Author URI:  https://uapp.group/
  * Requires PHP: 7.4.1
@@ -22,7 +22,7 @@ define('RESPONSIVE_TABS_FOR_ELEMENTOR', __FILE__);
  * @since 9.3.0
  * @var string The plugin version.
  */
-define('RESPONSIVE_TABS_VERSION', '9.3.0');
+define('RESPONSIVE_TABS_VERSION', '9.3.1');
 
 /**
  * Include the Responsive_Tabs_For_Elementor class.
