@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: tabs, tabs for elementor, tab plugin, elementor addons, tab
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.5.4
-Stable tag: 9.3.1
+Tested up to: 6.7.2
+Stable tag: 9.3.2
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -63,6 +63,9 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 14. Responsive view for elementor settings of Tabs Plugin
 
 == Changelog ==
+
+= 9.3.2 - 2025-03-03 =
+- Security Fix: Update deprecated code.
 
 = 9.3.1 - 2025-02-26 =
 - Modified: Changed plugin description

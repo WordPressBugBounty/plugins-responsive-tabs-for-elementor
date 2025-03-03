@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      9.3.0
+ * @since      9.3.2
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * ResponsiveParallaxTabs widget class.
  *
- * @since 9.3.0
+ * @since 9.3.2
  */
 class Responsive_Parallax_Tabs extends Widget_Base
 {
@@ -65,7 +65,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access public
    *
@@ -79,7 +79,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access public
    *
@@ -93,7 +93,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access public
    *
@@ -112,7 +112,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access public
    *
@@ -143,7 +143,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access protected
    *
@@ -168,11 +168,11 @@ class Responsive_Parallax_Tabs extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access protected
    */
-  protected function _register_controls()
+  protected function register_controls()
   {
     // Content Section
     $this->start_controls_section(
@@ -1238,7 +1238,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  9.3.0
+   * @since  9.3.2
    *
    * @access protected
    */
