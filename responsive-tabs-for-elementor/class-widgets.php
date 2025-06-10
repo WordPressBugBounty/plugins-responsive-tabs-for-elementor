@@ -9,7 +9,7 @@
  * @copyright
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      9.3.2
+ * @since      10.0.0
  * php version 7.4.1
  */
 
@@ -25,7 +25,7 @@ defined('ABSPATH') || die();
  *
  * Main Plugin class
  *
- * @since 9.3.2
+ * @since 10.0.0
  */
 class Widgets
 {
@@ -33,7 +33,7 @@ class Widgets
   /**
    * Instance
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access private
    * @static
    *
@@ -47,7 +47,7 @@ class Widgets
    * Ensures only one instance of the class is loaded or can be loaded.
    *
    * @return Plugin An instance of the class.
-   * @since  9.3.2
+   * @since  10.0.0
    * @access public
    *
    */
@@ -65,7 +65,7 @@ class Widgets
    *
    * Load widgets files
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access private
    */
   private function include_widgets_files()
@@ -80,6 +80,7 @@ class Widgets
     require_once 'widgets/class-responsive-accordion-with-counter.php';
     require_once 'widgets/class-responsive-faq-accordion.php';
     require_once 'widgets/class-responsive-parallax-tabs.php';
+    require_once 'widgets/hover-image-reveal-tabs/class-hover-image-reveal-tabs.php';
   }
 
   /**
@@ -87,7 +88,7 @@ class Widgets
    *
    * Load widgets templates files
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access private
    */
   private function include_widgets_templates_files()
@@ -101,13 +102,14 @@ class Widgets
    *
    * Load widgets templates controls
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access private
    */
   private function include_widgets_templates_controls()
   {
     require_once('widgets-templates/accordion-with-counter/control-elements/controls-accordion-with-counter.php');
     require_once('widgets-templates/accordion-with-counter/control-elements/controls-template-accordion-with-counter-and-image.php');
+    require_once('widgets/hover-image-reveal-tabs/controls/hover-image-reveal-tabs-controls.php');
   }
 
   /**
@@ -115,7 +117,7 @@ class Widgets
    *
    * Register new Elementor widgets.
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access public
    */
   public function register_widgets()
@@ -140,6 +142,7 @@ class Widgets
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Accordion_With_Counter());
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_FAQ_Accordion());
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Parallax_Tabs());
+    Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Hover_Image_Reveal_Tabs());
   }
 
 
@@ -148,7 +151,7 @@ class Widgets
    *
    * Register plugin action hooks and filters
    *
-   * @since  9.3.2
+   * @since  10.0.0
    * @access public
    */
   public function __construct()

@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      9.3.2
+ * @since      10.0.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * ResponsiveTestimonialsTabs widget class.
  *
- * @since 9.3.2
+ * @since 10.0.0
  */
 class Responsive_Testimonials_Tabs extends Widget_Base
 {
@@ -62,7 +62,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access public
    *
@@ -76,7 +76,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access public
    *
@@ -90,7 +90,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access public
    *
@@ -109,7 +109,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access public
    *
@@ -140,7 +140,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access protected
    *
@@ -163,7 +163,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access protected
    */
@@ -1159,7 +1159,7 @@ class Responsive_Testimonials_Tabs extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  9.3.2
+   * @since  10.0.0
    *
    * @access protected
    */
