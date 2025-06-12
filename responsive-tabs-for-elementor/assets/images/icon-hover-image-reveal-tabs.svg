@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+    <path d="M5.53906 6.15039H22.4609C23.2279 6.15039 23.8496 6.7721 23.8496 7.53906V19.4609C23.8496 20.2279 23.2279 20.8496 22.4609 20.8496H5.53906C4.7721 20.8496 4.15039 20.2279 4.15039 19.4609V7.53906C4.15039 6.7721 4.7721 6.15039 5.53906 6.15039Z"
+          stroke="white" stroke-opacity="0.8" stroke-width="0.3"/>
+    <rect x="6" y="18" width="5.33333" height="2" rx="0.888889" fill="white" fill-opacity="0.7"/>
+    <rect x="6.1" y="18.1" width="5.13333" height="1.8" rx="0.788889" stroke="white" stroke-opacity="0.8"
+          stroke-width="0.2"/>
+    <rect x="11.434" y="18.1" width="5.13333" height="1.8" rx="0.788889" fill="white" fill-opacity="0.3" stroke="white"
+          stroke-width="0.2"/>
+    <rect x="16.766" y="18.1" width="5.13333" height="1.8" rx="0.788889" fill="white" fill-opacity="0.3" stroke="white"
+          stroke-width="0.2"/>
+    <rect x="6.1" y="7.1" width="5.13333" height="1.8" rx="0.788889" fill="white" fill-opacity="0.3" stroke="white"
+          stroke-width="0.2"/>
+    <rect x="11.434" y="7.1" width="5.13333" height="1.8" rx="0.788889" fill="white" fill-opacity="0.3" stroke="white"
+          stroke-width="0.2"/>
+    <rect x="16.766" y="7.1" width="5.13333" height="1.8" rx="0.788889" fill="white" fill-opacity="0.3" stroke="white"
+          stroke-width="0.2"/>
+    <rect x="6" y="11" width="16" height="5" rx="0.7" fill="white" fill-opacity="0.5"/>
+</svg>

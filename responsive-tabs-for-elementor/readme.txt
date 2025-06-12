@@ -4,7 +4,7 @@ Tags: tabs, tabs for elementor, tab plugin, elementor addons, tab
 Requires PHP: 7.4.1
 Requires at least: 5.9
 Tested up to: 6.8.1
-Stable tag: 10.0.0
+Stable tag: 10.0.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
