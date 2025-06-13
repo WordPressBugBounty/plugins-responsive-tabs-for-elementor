@@ -35,6 +35,18 @@ function get_hover_image_reveal_tabs_content_section_controls($controls, $defaul
     ],
   ]);
 
+  $repeater->add_control(
+    'tab_link_enable',
+    [
+      'label'        => __('Show Link', 'responsive-tabs-for-elementor'),
+      'type'         => Controls_Manager::SWITCHER,
+      'label_on'     => __('Show', 'responsive-tabs-for-elementor'),
+      'label_off'    => __('Hide', 'responsive-tabs-for-elementor'),
+      'return_value' => 'yes',
+      'default'      => 'yes',
+    ]
+  );
+
   $repeater->add_control('tab_link', [
     'label'       => esc_html__('Link', 'responsive-tabs-for-elementor'),
     'type'        => Controls_Manager::URL,
@@ -42,6 +54,19 @@ function get_hover_image_reveal_tabs_content_section_controls($controls, $defaul
       'url' => '',
     ],
     'label_block' => true,
+    'condition'   => [
+      'tab_link_enable' => 'yes',
+    ],
+  ]);
+
+  $repeater->add_control('link_text', [
+    'label'       => esc_html__('Link Text', 'responsive-tabs-for-elementor'),
+    'type'        => Controls_Manager::TEXT,
+    'default'     => esc_html__('Read More', 'responsive-tabs-for-elementor'),
+    'label_block' => true,
+    'condition'   => [
+      'tab_link_enable' => 'yes',
+    ],
   ]);
 
   $controls->add_control(
@@ -56,13 +81,6 @@ function get_hover_image_reveal_tabs_content_section_controls($controls, $defaul
       'classes'            => 'responsive-hover-image-tabs-control',
     ]
   );
-
-  $controls->add_control('link_text', [
-    'label'       => esc_html__('Link Text', 'responsive-tabs-for-elementor'),
-    'type'        => Controls_Manager::TEXT,
-    'default'     => esc_html__('Read More', 'responsive-tabs-for-elementor'),
-    'label_block' => true,
-  ]);
 
   $controls->end_controls_section();
 }
@@ -344,6 +362,14 @@ function get_hover_image_reveal_tabs_tab_styles_section_controls($controls)
     [
       'name'     => 'tab_border',
       'selector' => '{{WRAPPER}} .hover-image-reveal-tabs .hover-image-reveal-tabs__item-description .hover-image-reveal-tabs__item-link',
+    ]
+  );
+
+  $controls->add_control(
+    'tab_button_hover_animation',
+    [
+      'label' => esc_html__('Hover Animation', 'responsive-tabs-for-elementor'),
+      'type'  => Controls_Manager::HOVER_ANIMATION,
     ]
   );
 

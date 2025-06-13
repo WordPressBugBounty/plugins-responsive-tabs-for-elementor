@@ -4,7 +4,7 @@ Tags: tabs, tabs for elementor, tab plugin, elementor addons, tab
 Requires PHP: 7.4.1
 Requires at least: 5.9
 Tested up to: 6.8.1
-Stable tag: 10.0.1
+Stable tag: 10.1.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -65,6 +65,10 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 16. Responsive view for elementor settings of Tabs Plugin
 
 == Changelog ==
+
+= 10.1.0 - 2025-06-13 =
+- New: Added animation and text for the button in the Hover Image Reveal Tabs.
+- Fix: Fixing a display error in the Hover Image Reveal Tabs widget.
 
 = 10.0.0 - 2025-06-10 =
 - New: Added "Hover Image Reveal Tabs".

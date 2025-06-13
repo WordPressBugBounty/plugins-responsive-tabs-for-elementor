@@ -9,21 +9,14 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      10.0.0
+ * @since      10.1.0
  * php version 7.4.1
  */
 
 namespace ResponsiveTabsForElementor\Widgets;
 
-//use Elementor\Group_Control_Background;
-//use Elementor\Group_Control_Border;
-//use Elementor\Group_Control_Typography;
-//use Elementor\Icons_Manager;
-//use Elementor\Repeater;
 use Elementor\Utils;
 use Elementor\Widget_Base;
-
-//use Elementor\Controls_Manager;
 
 // Security Note: Blocks direct access to the plugin PHP files.
 defined('ABSPATH') || die();
@@ -31,7 +24,7 @@ defined('ABSPATH') || die();
 /**
  * ResponsiveTestimonialsTabs widget class.
  *
- * @since 10.0.0
+ * @since 10.1.0
  */
 class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
 {
@@ -63,7 +56,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access public
    *
@@ -77,7 +70,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access public
    *
@@ -91,7 +84,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access public
    *
@@ -110,7 +103,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access public
    *
@@ -141,7 +134,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access protected
    *
@@ -149,13 +142,10 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
   protected function get_default_tab()
   {
     return [
-      'tab_image'         => [
+      'tab_image' => [
         'url' => Utils::get_placeholder_image_src(),
       ],
-      'tab_name'          => __('Milton Austin', 'responsive-tabs-for-elementor'),
-      'tab_subtitle'      => __('Manager', 'responsive-tabs-for-elementor'),
-      'tab_title_content' => __('Great collaboration', 'responsive-tabs-for-elementor'),
-      'tab_content'       => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'responsive-tabs-for-elementor'),
+      'tab_title' => __('Milton Austin', 'responsive-tabs-for-elementor'),
     ];
   }
 
@@ -164,7 +154,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access protected
    */
@@ -185,7 +175,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    *
    * @access protected
    */
@@ -217,10 +207,11 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
                 </h2>
               <?php }
 
-              if (!empty($tab['tab_link']['url']) && !empty($settings['link_text'])) { ?>
+              if (!empty($tab['tab_link']['url']) && !empty($tab['link_text']) && $tab['tab_link_enable'] === 'yes') { ?>
                 <a <?php $this->print_render_attribute_string('tab_link'); ?>
-                    class="hover-image-reveal-tabs__item-link">
-                  <?php echo esc_html($settings['link_text']); ?>
+                    class="hover-image-reveal-tabs__item-link <?php if (!empty($settings['tab_button_hover_animation'])) { ?> elementor-animation-<?php echo esc_attr($settings['tab_button_hover_animation']);
+                    } ?>">
+                  <?php echo esc_html($tab['link_text']); ?>
                 </a>
               <?php } ?>
             </div>

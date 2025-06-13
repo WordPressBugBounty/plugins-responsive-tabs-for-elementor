@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      10.0.0
+ * @since      10.1.0
  * php version 7.4.1
  */
 if (!defined('ABSPATH')) {
@@ -28,14 +28,14 @@ final class Responsive_Tabs_For_Elementor
   /**
    * Minimum Elementor Version
    *
-   * @since 10.0.0
+   * @since 10.1.0
    * @var string Minimum Elementor version required to run the plugin.
    */
   const MINIMUM_ELEMENTOR_VERSION = '3.10.0';
   /**
    * Minimum PHP Version
    *
-   * @since 10.0.0
+   * @since 10.1.0
    * @var string Minimum PHP version required to run the plugin.
    */
   const MINIMUM_PHP_VERSION = '7.4.1';
@@ -43,7 +43,7 @@ final class Responsive_Tabs_For_Elementor
   /**
    * Constructor
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function __construct()
@@ -85,7 +85,7 @@ final class Responsive_Tabs_For_Elementor
    * Load plugin localization files.
    * Fired by `init` action hook.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function i18n()
@@ -102,7 +102,7 @@ final class Responsive_Tabs_For_Elementor
    *
    * Fired by `plugins_loaded` action hook.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function init()
@@ -146,7 +146,7 @@ final class Responsive_Tabs_For_Elementor
    *
    * Warning when the site doesn't have Elementor installed or activated.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function admin_notice_missing_main_plugin()
@@ -168,7 +168,7 @@ final class Responsive_Tabs_For_Elementor
    *
    * Warning when the site doesn't have a minimum required Elementor version.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function admin_notice_minimum_elementor_version()
@@ -192,7 +192,7 @@ final class Responsive_Tabs_For_Elementor
    *
    * Warning when the site doesn't have a minimum required PHP version.
    *
-   * @since  10.0.0
+   * @since  10.1.0
    * @access public
    */
   public function admin_notice_minimum_php_version()
