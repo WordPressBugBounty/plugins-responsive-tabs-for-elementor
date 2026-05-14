@@ -9,7 +9,7 @@
  * @copyright
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      10.1.0
+ * @since      11.0.0
  * php version 7.4.1
  */
 
@@ -25,7 +25,7 @@ defined('ABSPATH') || die();
  *
  * Main Plugin class
  *
- * @since 10.1.0
+ * @since 11.0.0
  */
 class Widgets
 {
@@ -33,7 +33,7 @@ class Widgets
   /**
    * Instance
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access private
    * @static
    *
@@ -47,7 +47,7 @@ class Widgets
    * Ensures only one instance of the class is loaded or can be loaded.
    *
    * @return Plugin An instance of the class.
-   * @since  10.1.0
+   * @since  11.0.0
    * @access public
    *
    */
@@ -65,7 +65,7 @@ class Widgets
    *
    * Load widgets files
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access private
    */
   private function include_widgets_files()
@@ -81,6 +81,7 @@ class Widgets
     require_once 'widgets/class-responsive-faq-accordion.php';
     require_once 'widgets/class-responsive-parallax-tabs.php';
     require_once 'widgets/hover-image-reveal-tabs/class-hover-image-reveal-tabs.php';
+    require_once 'widgets/class-responsive-portfolio-tabs.php';
   }
 
   /**
@@ -88,7 +89,7 @@ class Widgets
    *
    * Load widgets templates files
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access private
    */
   private function include_widgets_templates_files()
@@ -102,7 +103,7 @@ class Widgets
    *
    * Load widgets templates controls
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access private
    */
   private function include_widgets_templates_controls()
@@ -117,7 +118,7 @@ class Widgets
    *
    * Register new Elementor widgets.
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access public
    */
   public function register_widgets()
@@ -143,6 +144,7 @@ class Widgets
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_FAQ_Accordion());
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Parallax_Tabs());
     Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Hover_Image_Reveal_Tabs());
+    Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Responsive_Portfolio_Tabs());
   }
 
 
@@ -151,7 +153,7 @@ class Widgets
    *
    * Register plugin action hooks and filters
    *
-   * @since  10.1.0
+   * @since  11.0.0
    * @access public
    */
   public function __construct()

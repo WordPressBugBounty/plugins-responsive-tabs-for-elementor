@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: tabs, tabs for elementor, tab plugin, elementor addons, tab
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.8.1
-Stable tag: 10.1.0
+Tested up to: 6.9.4
+Stable tag: 11.0.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -47,24 +47,29 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 
 == Screenshots ==
 
-1. Front-end design of Hover Image Reveal Tabs (Variant 1)
-2. Front-end design of Hover Image Reveal Tabs (Variant 2)
-3. Front-end design of Parallax Tabs
-4. Front-end design of FAQ Accordion
-5. Front-end design of Accordion With Counter
-6. Front-end design of Testimonials Tabs
-7. Front-end design of Vertical Tabs
-8. Front-end design with opened tabs
-9. Front-end design of WordPress tabs with text and images
-10. Front-end design of WordPress with text tabs
-11. Front-end design of WordPress with accordion tabs
-12. Style settings for Tabs Plugin for Elementor
-13. Content settings of Tabs Plugin
-14. Content additional settings of Tabs Plugin for Elementor
-15. Advanced settings of Tabs Plugin for Elementor
-16. Responsive view for elementor settings of Tabs Plugin
+1. Front-end design of Portfolio Tabs (Variant 1)
+2. Front-end design of Portfolio Tabs (Variant 2)
+3. Front-end design of Hover Image Reveal Tabs (Variant 1)
+4. Front-end design of Hover Image Reveal Tabs (Variant 2)
+5. Front-end design of Parallax Tabs
+6. Front-end design of FAQ Accordion
+7. Front-end design of Accordion With Counter
+8. Front-end design of Testimonials Tabs
+9. Front-end design of Vertical Tabs
+10. Front-end design with opened tabs
+11. Front-end design of WordPress tabs with text and images
+12. Front-end design of WordPress with text tabs
+13. Front-end design of WordPress with accordion tabs
+14. Style settings for Tabs Plugin for Elementor
+15. Content settings of Tabs Plugin
+16. Content additional settings of Tabs Plugin for Elementor
+17. Advanced settings of Tabs Plugin for Elementor
+18. Responsive view for Elementor settings of Tabs Plugin
 
 == Changelog ==
+
+= 11.0.0 - 2026-05-14 =
+- New: Added "Portfolio Tabs".
 
 = 10.1.0 - 2025-06-13 =
 - New: Added animation and text for the button in the Hover Image Reveal Tabs.
