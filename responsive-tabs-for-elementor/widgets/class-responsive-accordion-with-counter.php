@@ -6,15 +6,16 @@
  * @package    ResponsiveTabsForElementor
  * @subpackage WordPress
  * @author     UAPP GROUP
- * @copyright  2024 UAPP GROUP
+ * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.0.0
+ * @since      11.0.1
  * php version 7.4.1
  */
 
 namespace ResponsiveTabsForElementor\Widgets;
 
+use ResponsiveTabsForElementor\Responsive_Tabs_Assets;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
@@ -30,7 +31,7 @@ defined('ABSPATH') || die();
 /**
  * AccordionWithCounter widget class.
  *
- * @since 11.0.0
+ * @since 11.0.1
  */
 class Responsive_Accordion_With_Counter extends Widget_Base
 {
@@ -47,22 +48,14 @@ class Responsive_Accordion_With_Counter extends Widget_Base
     parent::__construct($data, $args);
     wp_register_style('responsive-accordion-with-counter', plugins_url('/assets/css/responsive-accordion-with-counter.min.css', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION);
 
-    if (!function_exists('get_plugin_data')) {
-      require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] >= "3.5.0") {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    } else {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-old-elementor-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    }
+    Responsive_Tabs_Assets::register_tabs_handler();
   }
 
   /**
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -76,7 +69,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -90,7 +83,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -109,7 +102,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -140,7 +133,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    *
@@ -157,7 +150,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    *
@@ -176,7 +169,7 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
@@ -363,31 +356,33 @@ class Responsive_Accordion_With_Counter extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
   protected function render()
   {
-    $settings = $this->get_settings_for_display();
+    $settings           = $this->get_settings_for_display();
+    $attributes         = '';
+    $accordion_template = $settings['accordion_templates'] ?? '';
 
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") {
+    if (Responsive_Tabs_Assets::is_legacy_elementor()) {
       $this->add_render_attribute(
         'responsive_tabs',
         [
           'class'                         => ['accordion-params'],
-          'data-direction-responsivetabs' => esc_attr($settings['accordion_direction']),
-          'data-templates-responsivetabs' => esc_attr($settings['accordion_templates']),
+          'data-direction-responsivetabs' => esc_attr($settings['accordion_direction'] ?? ''),
+          'data-templates-responsivetabs' => esc_attr($accordion_template),
         ]
       );
 
       $attributes = $this->get_render_attribute_string('responsive_tabs');
     }
 
-    if ($settings['tab']) {
-      get_default_accordion_template($settings, $attributes);
-    } elseif ($settings['accordion']) {
+    if ($accordion_template === '1' && !empty($settings['accordion'])) {
       get_accordion_with_counter_image_template($settings, $attributes);
+    } elseif (!empty($settings['tab'])) {
+      get_default_accordion_template($settings, $attributes);
     }
   }
 }

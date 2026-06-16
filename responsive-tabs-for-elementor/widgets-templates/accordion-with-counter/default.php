@@ -1,6 +1,6 @@
-<?php function get_default_accordion_template($settings, $attributes)
+<?php function get_default_accordion_template($settings, $attributes = '')
 {
-  if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
+  if (\ResponsiveTabsForElementor\Responsive_Tabs_Assets::is_legacy_elementor()) { ?>
     <div <?php echo $attributes; ?>></div>
   <?php } ?>
 

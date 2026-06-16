@@ -9,12 +9,13 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.0.0
+ * @since      11.0.1
  * php version 7.4.1
  */
 
 namespace ResponsiveTabsForElementor\Widgets;
 
+use ResponsiveTabsForElementor\Responsive_Tabs_Assets;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Widget_Base;
@@ -27,7 +28,7 @@ defined('ABSPATH') || die();
 /**
  * Responsive Portfolio Tabs widget class.
  *
- * @since 11.0.0
+ * @since 11.0.1
  */
 class Responsive_Portfolio_Tabs extends Widget_Base
 {
@@ -45,15 +46,7 @@ class Responsive_Portfolio_Tabs extends Widget_Base
 
     wp_register_style('responsive-portfolio-tabs', plugins_url('/assets/css/responsive-portfolio-tabs.min.css', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION);
 
-    if (!function_exists('get_plugin_data')) {
-      require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] >= "3.5.0") {
-      wp_register_script('responsive-portfolio-tabs', plugins_url('/assets/js/responsive-portfolio-tabs-widget-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['jquery', 'elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    } else {
-      wp_register_script('responsive-portfolio-tabs', plugins_url('/assets/js/responsive-portfolio-tabs-widget-old-elementor-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['jquery', 'elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    }
+    Responsive_Tabs_Assets::register_portfolio_handler();
   }
 
   /**
@@ -771,7 +764,7 @@ class Responsive_Portfolio_Tabs extends Widget_Base
 
     $default_tab = $show_all_tab ? 'all' : array_key_first($tabs);
 
-    if (get_plugin_data(ELEMENTOR__FILE__) < "3.5.0") {
+    if (Responsive_Tabs_Assets::is_legacy_elementor()) {
       $this->add_render_attribute(
           'responsive_portfolio_tabs_params',
           [
@@ -797,7 +790,7 @@ class Responsive_Portfolio_Tabs extends Widget_Base
     );
     ?>
 
-    <?php if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
+    <?php if (Responsive_Tabs_Assets::is_legacy_elementor()) { ?>
     <div <?php echo $this->get_render_attribute_string('responsive_portfolio_tabs_params'); ?>></div>
   <?php } ?>
 

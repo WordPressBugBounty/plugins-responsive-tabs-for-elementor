@@ -6,15 +6,16 @@
  * @package    ResponsiveTabsForElementor
  * @subpackage WordPress
  * @author     UAPP GROUP
- * @copyright  2024 UAPP GROUP
+ * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.0.0
+ * @since      11.0.1
  * php version 7.4.1
  */
 
 namespace ResponsiveTabsForElementor\Widgets;
 
+use ResponsiveTabsForElementor\Responsive_Tabs_Assets;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
@@ -30,7 +31,7 @@ defined('ABSPATH') || die();
 /**
  * ResponsiveParallaxTabs widget class.
  *
- * @since 11.0.0
+ * @since 11.0.1
  */
 class Responsive_Parallax_Tabs extends Widget_Base
 {
@@ -45,27 +46,17 @@ class Responsive_Parallax_Tabs extends Widget_Base
   public function __construct($data = [], $args = null)
   {
     parent::__construct($data, $args);
-    wp_register_style('swiper', plugins_url('/assets/libs/swiper-bundle.min.css', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION);
+    Responsive_Tabs_Assets::register_swiper();
+    Responsive_Tabs_Assets::register_tabs_handler();
+
     wp_register_style('parallax-tabs', plugins_url('/assets/css/responsive-parallax-tabs.min.css', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION);
-    wp_register_script('swiper', plugins_url('/assets/libs/swiper-bundle.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION, true);
-
-
-    if (!function_exists('get_plugin_data')) {
-      require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] >= "3.5.0") {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    } else {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-old-elementor-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    }
   }
 
   /**
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -79,7 +70,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -93,7 +84,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -112,7 +103,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -143,7 +134,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    *
@@ -168,7 +159,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
@@ -1238,7 +1229,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
@@ -1246,7 +1237,7 @@ class Responsive_Parallax_Tabs extends Widget_Base
   {
     $settings = $this->get_settings_for_display();
 
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") {
+    if (Responsive_Tabs_Assets::is_legacy_elementor()) {
       $this->add_render_attribute(
           'responsive_tabs',
           [
@@ -1265,11 +1256,28 @@ class Responsive_Parallax_Tabs extends Widget_Base
     }
 
     if ($settings['parallax_tab']) {
-      if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
+      if (Responsive_Tabs_Assets::is_legacy_elementor()) { ?>
         <div <?php echo $this->get_render_attribute_string('responsive_tabs'); ?>></div>
-      <?php } ?>
+      <?php }
 
-      <section class="swiperTabs parallax-tab">
+      $this->add_render_attribute(
+          'parallax_slider',
+          [
+              'class'                          => ['swiper', 'swiperTabs', 'parallax-tab'],
+              'data-parallax-loop'             => esc_attr($settings['parallax_loop'] ?? ''),
+              'data-parallax-mousewheel'       => esc_attr($settings['parallax_mousewheel'] ?? ''),
+              'data-parallax-grabcursor'       => esc_attr($settings['parallax_grabcursor'] ?? ''),
+              'data-parallax-autoplay'         => esc_attr($settings['autoplay'] ?? 'no'),
+              'data-parallax-autoplay-speed'   => esc_attr($settings['autoplay_speed'] ?? 5000),
+              'data-parallax-navigation'       => esc_attr($settings['navigation'] ?? 'dots'),
+              'data-parallax-direction'        => esc_attr($settings['direction'] ?? 'vertical'),
+              'data-parallax-direction-tablet' => esc_attr($settings['direction_tablet'] ?? ''),
+              'data-parallax-direction-mobile' => esc_attr($settings['direction_mobile'] ?? ''),
+          ]
+      );
+      ?>
+
+      <section <?php echo $this->get_render_attribute_string('parallax_slider'); ?>>
         <div class="swiper-wrapper parallax-tab__container">
           <?php foreach ($settings['parallax_tab'] as $parallax_items) { ?>
             <div class="swiper-slide">

@@ -1,6 +1,6 @@
-<?php function get_accordion_with_counter_image_template($settings, $attributes)
+<?php function get_accordion_with_counter_image_template($settings, $attributes = '')
 {
-  if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
+  if (\ResponsiveTabsForElementor\Responsive_Tabs_Assets::is_legacy_elementor()) { ?>
     <div <?php echo $attributes; ?>></div>
   <?php } ?>
 
@@ -37,11 +37,18 @@
           <?php $counter = 1;
           foreach ($settings['accordion'] as $item) { ?>
             <div class="accordion-with-counter-tabs_item" id="tabs__item-<?php echo esc_attr($counter); ?>">
-              <div class="accordion-with-counter-tabs_image">
-                <img
-                    src="<?php echo esc_url($item['accordion_image']['url']); ?>"
-                    alt="<?php echo esc_url($item['accordion_image']['alt']); ?>"/>
-              </div>
+              <?php
+              $image     = $item['accordion_image'] ?? [];
+              $image_url = $image['url'] ?? '';
+              $image_alt = $image['alt'] ?? '';
+
+              if ($image_url) { ?>
+                <div class="accordion-with-counter-tabs_image">
+                  <img
+                      src="<?php echo esc_url($image_url); ?>"
+                      alt="<?php echo esc_attr($image_alt); ?>"/>
+                </div>
+              <?php } ?>
 
               <?php if ($settings['accordion_enable_name_content'] === 'yes') { ?>
                 <h2 class="accordion-with-counter-tabs_title"><?php echo wp_kses_post($item['accordion_name_content']); ?></h2>

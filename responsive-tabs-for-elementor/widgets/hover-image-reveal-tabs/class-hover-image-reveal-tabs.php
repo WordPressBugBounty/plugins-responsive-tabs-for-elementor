@@ -6,15 +6,16 @@
  * @package    ResponsiveTabsForElementor
  * @subpackage WordPress
  * @author     UAPP GROUP
- * @copyright  2024 UAPP GROUP
+ * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.0.0
+ * @since      11.0.1
  * php version 7.4.1
  */
 
 namespace ResponsiveTabsForElementor\Widgets;
 
+use ResponsiveTabsForElementor\Responsive_Tabs_Assets;
 use Elementor\Utils;
 use Elementor\Widget_Base;
 
@@ -24,7 +25,7 @@ defined('ABSPATH') || die();
 /**
  * ResponsiveTestimonialsTabs widget class.
  *
- * @since 11.0.0
+ * @since 11.0.1
  */
 class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
 {
@@ -41,22 +42,14 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
     parent::__construct($data, $args);
     wp_register_style('responsive-hover-image-reveal-tabs', plugins_url('/assets/css/responsive-hover-image-reveal-tabs.min.css', RESPONSIVE_TABS_FOR_ELEMENTOR), [], RESPONSIVE_TABS_VERSION);
 
-    if (!function_exists('get_plugin_data')) {
-      require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-
-    if (get_plugin_data(ELEMENTOR__FILE__)['Version'] >= "3.5.0") {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    } else {
-      wp_register_script('responsive-tabs', plugins_url('/assets/js/responsive-tabs-widget-old-elementor-handler.min.js', RESPONSIVE_TABS_FOR_ELEMENTOR), ['elementor-frontend'], RESPONSIVE_TABS_VERSION, true);
-    }
+    Responsive_Tabs_Assets::register_tabs_handler();
   }
 
   /**
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -70,7 +63,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -84,7 +77,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -103,7 +96,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access public
    *
@@ -134,7 +127,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    * Get default tab.
    *
    * @return array Default tab.
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    *
@@ -142,10 +135,10 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
   protected function get_default_tab()
   {
     return [
-      'tab_image' => [
-        'url' => Utils::get_placeholder_image_src(),
-      ],
-      'tab_title' => __('Milton Austin', 'responsive-tabs-for-elementor'),
+        'tab_image' => [
+            'url' => Utils::get_placeholder_image_src(),
+        ],
+        'tab_title' => __('Milton Austin', 'responsive-tabs-for-elementor'),
     ];
   }
 
@@ -154,7 +147,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
@@ -175,7 +168,7 @@ class Responsive_Hover_Image_Reveal_Tabs extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.0.0
+   * @since  11.0.1
    *
    * @access protected
    */
